@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html onkeydown="playkey(event)">
+
+<style>
+@font-face {
+    font-family: 'whitney';
+    src: url(https://lawrencfgsdfg.github.io/fakediscord/whitneylight.ttf);
+}
+
+body, html {
+	margin:0;
+	padding:0;
+	height:100%;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+* {
+	font-size: 32px;
+	font-family: 'whitney';
+}
+
+textarea {
+	width: 100%;
+	height: 100%;
+	outline: none;
+	border-color: white;
+}
+</style>
+
+<textarea spellcheck="false" id="box" placeholder="type stuff here"></textarea>
+<a href="https://www.youtube.com/watch?v=P_9vXJZVT54" target="_blank" style="color:blue; position: fixed; left: 10px; bottom: 10px;" onfocus="this.blur();">inspiration/sound source</a>
+
+<script>
+var box = document.getElementById('box');
+box.focus();
+
+function playkey(e) {
+	var thekey = e.keyCode;
+	if (event.repeat) {return;}
+	if (typeof thekey == "number" && thekey >= 65 && thekey <= 90) {
+		thekey = String.fromCharCode(thekey);
+	} else if (thekey == 32) {
+		thekey = "SPACE";
+	} else if (thekey == 8) {
+		thekey = "BACKSPACE";
+	} else if (thekey == 20) {
+		thekey = "CAPS";
+	} else if (thekey == 13) {
+		thekey = "ENTER";
+	} else { return; }
+	var audio = new Audio(thekey + ".mp3");
+	audio.play();
+};
+</script>
+
+</html>
