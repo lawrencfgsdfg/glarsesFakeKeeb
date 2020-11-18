@@ -1,56 +1,26 @@
 <!DOCTYPE html>
-<html onkeydown="playkey(event)">
-
+<html>
+<title>IMPOSTOR PANDAS</title>
 <style>
-@font-face {
-    font-family: 'whitney';
-    src: url(https://lawrencfgsdfg.github.io/fakediscord/whitneylight.ttf);
-}
-
-body, html {
-	margin:0;
-	padding:0;
-	height:100%;
-	overflow-y: hidden;
-	overflow-x: hidden;
-}
-
-* {
-	font-size: 32px;
-	font-family: 'whitney';
-}
-
-textarea {
-	width: 100%;
-	height: 100%;
-	outline: none;
-	border-color: white;
-}
+@font-face { font-family: 'whitney'; src: url(https://lawrencfgsdfg.github.io/fakediscord/whitneylight.ttf); }
+* { font-size: 20px; font-family: 'whitney'; }
+body, html { margin:0; padding:0; height:100%; overflow-y: hidden; overflow-x: hidden; }
+textarea { font-size: 32px; width: 100%; height: 100%; outline: none; border-color: black; background-color: white; color: black; }
+a {color:CornflowerBlue;}
+.dark { background-color: black; color: white; }	
 </style>
 
-<textarea spellcheck="false" id="box" placeholder="type stuff here"></textarea>
-<a href="https://www.youtube.com/watch?v=P_9vXJZVT54" target="_blank" style="color:blue; position: fixed; left: 10px; bottom: 10px;" onfocus="this.blur();">inspiration/sound source</a>
+<textarea spellcheck="false" id="box" placeholder="type stuff here" onkeydown="playkey(event)"></textarea>
+<span style="position: fixed; left: 10px; bottom: 10px;">site by lawrencfgsdfg, 
+<a href="https://www.youtube.com/watch?v=P_9vXJZVT54" target="_blank" onfocus="this.blur();">idea by glarses</a>
+</span>
 
 <script>
-var box = document.getElementById('box');
+var thebody = document.body, box = document.getElementById("box");
 box.focus();
-
-function playkey(e) {
-	var thekey = e.keyCode;
-	if (event.repeat) {return;}
-	if (typeof thekey == "number" && thekey >= 65 && thekey <= 90) {
-		thekey = String.fromCharCode(thekey);
-	} else if (thekey == 32) {
-		thekey = "SPACE";
-	} else if (thekey == 8) {
-		thekey = "BACKSPACE";
-	} else if (thekey == 20) {
-		thekey = "CAPS";
-	} else if (thekey == 13) {
-		thekey = "ENTER";
-	} else { return; }
-	var audio = new Audio(thekey + ".mp3");
-	audio.play();
+function playkey(a) {
+  a = a.keyCode;
+  event.repeat || (27 == a && (box.classList.toggle("dark"), thebody.classList.toggle("dark")), a = 65 <= a && 90 >= a ? String.fromCharCode(a) : 32 == a ? "SPACE" : 8 == a ? "BACKSPACE" : 20 == a ? "CAPS" : 13 == a ? "ENTER" : String.fromCharCode(Math.round(65 + (9301 * a + 49297) % 233280 / 233280 * 25)), (new Audio(a + ".mp3")).play());
 };
 </script>
 
